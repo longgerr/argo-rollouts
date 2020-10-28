@@ -6,7 +6,7 @@ spec:
   gateways:
   - rollouts-demo-gateway
   hosts:
-  - rollouts-demo.local
+  - rollouts-demo-blue-green.local
   http:
   - name: preview
     match:
