@@ -11,8 +11,8 @@ spec:
   - name: preview
     match:
     - headers:
-        x-preview:
-          exact: "true"
+        cookie:
+          regex: ^(.\*?;)?(preview=true)(;.\*)?$
     route:
     - destination:
         host: rollouts-demo-preview
