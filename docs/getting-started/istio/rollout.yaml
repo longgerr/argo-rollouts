@@ -2,9 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: rollouts-demo
-  labels:
-    app: rollouts-demo
-    version: v1
 spec:
   replicas: 10
   strategy:
@@ -29,6 +26,7 @@ spec:
       labels:
         app: rollouts-demo
         istio-injection: enabled
+        version: blue
     spec:
       containers:
       - name: rollouts-demo
