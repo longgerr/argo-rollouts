@@ -7,18 +7,22 @@ metadata:
 spec:
   replicas: 10
   strategy:
-    canary:
-      canaryService: rollouts-demo-canary
-      stableService: rollouts-demo-stable
-      trafficRouting:
-        istio:
-          virtualService:
-            name: rollouts-demo-vsvc
-            routes:
-            - primary # At least one route is required
-      steps:
-      - setWeight: 5
-      - pause: {}
+    blueGreen:
+      autoPromotionEnabled: false
+      activeService: rollouts-demo-active
+      previewService: rollouts-demo-preview
+    # canary:
+    #   canaryService: rollouts-demo-canary
+    #   stableService: rollouts-demo-stable
+    #   trafficRouting:
+    #     istio:
+    #       virtualService:
+    #         name: rollouts-demo-vsvc
+    #         routes:
+    #         - primary # At least one route is required
+    #   steps:
+    #   - setWeight: 5
+    #   - pause: {}
   revisionHistoryLimit: 2
   selector:
     matchLabels:
