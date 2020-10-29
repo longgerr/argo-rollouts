@@ -12,7 +12,7 @@ spec:
     match:
     - headers:
         cookie:
-          regex: ^(.\*?;)?(preview=true)(;.\*)?$
+          regex: ^(.*?;)?(preview=true)(;.*)?$
     route:
     - destination:
         host: rollouts-demo-preview
