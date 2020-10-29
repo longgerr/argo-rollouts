@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: rollouts-demo-canary
+  labels:
+    app: rollouts-demo-canary
+spec:
+  replicas: 10
+  strategy:
+    canary:
+      canaryService: rollouts-demo-canary
+      stableService: rollouts-demo-stable
+      trafficRouting:
+        istio:
+          virtualService:
+            name: rollouts-demo-vsvc-canary
+            routes:
+            - primary # At least one route is required
+      steps:
+      - setWeight: 5
+      - pause: {}
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo-canary
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo-canary
+        istio-injection: enabled
+        version: blue
+    spec:
+      containers:
+      - name: rollouts-demo-canary
+        image: argoproj/rollouts-demo:blue
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        resources:
+          requests:
+            memory: 32Mi
+            cpu: 5m

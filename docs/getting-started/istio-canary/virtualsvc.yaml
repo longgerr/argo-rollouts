@@ -1,12 +1,12 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: rollouts-demo-vsvc
+  name: rollouts-demo-vsvc-canary
 spec:
   gateways:
-  - rollouts-demo-gateway
+  - rollouts-demo-gateway-canary
   hosts:
-  - rollouts-demo.local
+  - rollouts-demo-canary.local
   http:
   - name: primary
     route:

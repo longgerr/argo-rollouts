@@ -1,9 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: rollouts-demo
+  name: rollouts-demo-blue-green
   labels:
-    app: rollouts-demo
+    app: rollouts-demo-blue-green
 spec:
   replicas: 10
   strategy:
@@ -26,16 +26,16 @@ spec:
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: rollouts-demo
+      app: rollouts-demo-blue-green
   template:
     metadata:
       labels:
-        app: rollouts-demo
+        app: rollouts-demo-blue-green
         istio-injection: enabled
         version: blue
     spec:
       containers:
-      - name: rollouts-demo
+      - name: rollouts-demo-blue-green
         image: argoproj/rollouts-demo:blue
         ports:
         - name: http

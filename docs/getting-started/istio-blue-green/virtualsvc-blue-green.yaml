@@ -4,7 +4,7 @@ metadata:
   name: rollouts-demo-vsvc-blue-green
 spec:
   gateways:
-  - rollouts-demo-gateway
+  - rollouts-demo-gateway-blue-green
   hosts:
   - rollouts-demo-blue-green.local
   http:
