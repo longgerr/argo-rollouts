@@ -11,6 +11,7 @@ spec:
       autoPromotionEnabled: false
       activeService: rollouts-demo-active
       previewService: rollouts-demo-preview
+      previewReplicaCount: 1
     # canary:
     #   canaryService: rollouts-demo-canary
     #   stableService: rollouts-demo-stable
