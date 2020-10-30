@@ -33,11 +33,11 @@ spec:
       labels:
         app: rollouts-demo-blue-green
         istio-injection: enabled
-        version: blue
+        version: green
     spec:
       containers:
       - name: rollouts-demo-blue-green
-        image: argoproj/rollouts-demo:blue
+        image: argoproj/rollouts-demo:green
         ports:
         - name: http
           containerPort: 8080
